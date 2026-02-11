@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-API_KEY = "PASTE_API_KEY"
+API_KEY = "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"
 
 @app.route("/")
 def home():
@@ -24,4 +24,6 @@ def chat():
 
     return jsonify(r.json())
 
-app.run()
+import os
+port = int(os.environ.get("PORT", 5000))
+app.run(host="0.0.0.0", port=port)

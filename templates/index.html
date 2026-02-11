@@ -1,0 +1,17 @@
+<input id="msg">
+<button onclick="send()">Ask</button>
+<pre id="res"></pre>
+
+<script>
+function send(){
+ fetch("/chat",{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({message:msg.value})
+ })
+ .then(r=>r.json())
+ .then(d=>{
+   res.textContent = d.choices[0].message.content
+ });
+}
+</script>
